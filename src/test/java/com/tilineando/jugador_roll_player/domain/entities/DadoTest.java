@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DadoTest {
-    Color rojo = new Color();
-    Color negro = new Color();
+    Color rojo = new Color("Rojo");
+    Color negro = new Color("Rojo");
 
     @Test
     public void SeIntercambiaCorrectamenteColorDelDado() {

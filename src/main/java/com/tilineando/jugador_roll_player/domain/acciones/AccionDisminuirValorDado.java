@@ -4,18 +4,18 @@ import com.tilineando.jugador_roll_player.domain.Personaje;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-public class AccionDisminuirValorDado implements AccionAtributoDado {
-    private PosicionDeDado posicionDeDado;
-    private Integer valor;
+
+public class AccionDisminuirValorDado extends AccionModificarDado {
+    private final Integer valor;
+
+    public AccionDisminuirValorDado(PosicionDeDado posicionDeDado, Integer valor) {
+        super(posicionDeDado);
+        this.valor = valor;
+    }
 
     @Override
     public void accion(Personaje personaje) {
         posicionDeDado.obteneDado().restateCant(valor);
     }
 
-    @Override
-    public boolean puedeRealizarse(Personaje personaje) {
-        return posicionDeDadoCorrespondeAPersonaje(personaje, posicionDeDado);
-    }
 }
