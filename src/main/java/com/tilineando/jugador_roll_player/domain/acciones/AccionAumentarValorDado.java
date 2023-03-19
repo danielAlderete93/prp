@@ -1,7 +1,7 @@
 package com.tilineando.jugador_roll_player.domain.acciones;
 
 import com.tilineando.jugador_roll_player.domain.Personaje;
-import lombok.AllArgsConstructor;
+
 
 
 public class AccionAumentarValorDado extends AccionModificarDado {
@@ -18,3 +18,4 @@ public class AccionAumentarValorDado extends AccionModificarDado {
     }
 
 }
+

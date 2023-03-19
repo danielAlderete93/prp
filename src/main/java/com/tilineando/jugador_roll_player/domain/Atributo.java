@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -19,12 +20,14 @@ public class Atributo {
     private List<Dado> dados = new ArrayList<>();
     private Integer limiteDados;
     private Accion accion;
+    private boolean puedeUtilizarAccion = true;
 
     public Integer sumatoriaValorDados() {
         if (dados.isEmpty()) {
             return 0;
         }
         return dados.stream()
+                .filter(Objects::nonNull)
                 .map(Dado::getValor)
                 .reduce(0, Integer::sum);
     }
@@ -34,6 +37,10 @@ public class Atributo {
             throw new DomainAtributoException("Solo se puede agregar " + this.limiteDados + " dados");
         }
         dados.add(dado);
+        habilitarAccion();
+    }
+    public  Dado obteneDadoEnPosicion(int posicion){
+        return  this.dados.get(posicion);
     }
 
     public void quitateDado(Dado dado) {
@@ -46,8 +53,23 @@ public class Atributo {
 
 
     public boolean estaEnRangoDePosiciones(Integer posicion) {
-        return posicion > 0 && posicion <= this.dados.size();
+        return posicion >= 0 && posicion <= limiteDados;
     }
 
+    public void realizaAccion(Personaje personaje) {
+        if (!puedeUtilizarAccion) {
+            throw new DomainAtributoException("No puede ejecutar la accion del atributo" + this.nombre);
+        }
+        accion.realizaAccion(personaje);
+        deshabilitarAccion();
+    }
+
+    public void habilitarAccion() {
+        this.puedeUtilizarAccion = true;
+    }
+
+    public void deshabilitarAccion() {
+        this.puedeUtilizarAccion = false;
+    }
 
 }

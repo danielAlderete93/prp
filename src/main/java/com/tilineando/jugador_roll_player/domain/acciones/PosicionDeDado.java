@@ -16,15 +16,24 @@ public class PosicionDeDado {
     private Integer posicion;
 
     public Dado obteneDado() {
+
         if (!tienePosicionValida()) {
             return null;
         }
-        return this.atributo.getDados().get(posicion);
+        return this.atributo.obteneDadoEnPosicion(posicion);
     }
 
     public boolean tienePosicionValida() {
-        return this.atributo != null && atributo.estaEnRangoDePosiciones(posicion);
+        return this.atributo != null
+                && atributo.estaEnRangoDePosiciones(posicion)
+                ;
     }
 
-
+    @Override
+    public String toString() {
+        return "PosicionDeDado{" +
+                "atributo=" + atributo +
+                ", posicion=" + posicion +
+                '}';
+    }
 }

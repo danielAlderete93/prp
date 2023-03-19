@@ -1,6 +1,5 @@
 package com.tilineando.jugador_roll_player.domain.entorno;
 
-import com.tilineando.jugador_roll_player.domain.Dado;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

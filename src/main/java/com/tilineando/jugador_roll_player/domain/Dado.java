@@ -30,12 +30,12 @@ public class Dado {
         this.valor = valor;
     }
 
-    public void realizaRoll() {
+    public Dado realizaRoll() {
         int range = maximoValor - minimoValor + 1;
-        int newValue = (int)(Math.random() * range) + minimoValor;
+        int newValue = (int) (Math.random() * range) + minimoValor;
         setValor(newValue);
+        return this;
     }
-
 
 
     public Dado girate180() {
@@ -91,9 +91,40 @@ public class Dado {
     }
 
 
-
     public Dado clonate() {
         return new Dado(this);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Dado)) return false;
+
+        Dado dado = (Dado) o;
+
+        if (getColor() != null ? !getColor().equals(dado.getColor()) : dado.getColor() != null) return false;
+        if (getValor() != null ? !getValor().equals(dado.getValor()) : dado.getValor() != null) return false;
+        if (getMinimoValor() != null ? !getMinimoValor().equals(dado.getMinimoValor()) : dado.getMinimoValor() != null)
+            return false;
+        return getMaximoValor() != null ? getMaximoValor().equals(dado.getMaximoValor()) : dado.getMaximoValor() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getColor() != null ? getColor().hashCode() : 0;
+        result = 31 * result + (getValor() != null ? getValor().hashCode() : 0);
+        result = 31 * result + (getMinimoValor() != null ? getMinimoValor().hashCode() : 0);
+        result = 31 * result + (getMaximoValor() != null ? getMaximoValor().hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Dado{" +
+                "color=" + color +
+                ", valor=" + valor +
+                ", minimoValor=" + minimoValor +
+                ", maximoValor=" + maximoValor +
+                '}';
+    }
 }
