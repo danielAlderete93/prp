@@ -11,7 +11,7 @@ import java.util.Random;
 @Getter
 @Setter
 public class BolsaDados {
-    List<Dado> dadosDisponibles;
+    private List<Dado> dadosDisponibles;
 
     public BolsaDados() {
         this.dadosDisponibles = DadosDisponibles.obtener();

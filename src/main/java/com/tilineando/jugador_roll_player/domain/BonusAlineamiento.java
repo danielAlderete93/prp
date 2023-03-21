@@ -8,6 +8,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BonusAlineamiento {
-    private PosicionAlineamiento posicionAlineamiento;
-    private Integer bonus;
+        private PosicionAlineamiento posicionAlineamiento;
+        private Integer bonus;
 }

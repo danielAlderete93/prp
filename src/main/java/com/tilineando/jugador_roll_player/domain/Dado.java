@@ -79,6 +79,10 @@ public class Dado {
         return this;
     }
 
+    public boolean tenesColor(Color color) {
+        return this.color.equals(color);
+    }
+
     public Dado cambiatePor(Dado otroDado) {
 
         if (otroDado == null) {

@@ -31,24 +31,24 @@ public class AlineamientoTest {
                 .moveteIzquierda()
                 .moveteArriba()
                 .moveteAbajo();
-        Assertions.assertEquals(posicionActual.getPosicionX(), 1);
-        Assertions.assertEquals(posicionActual.getPosicionY(), 1);
+        Assertions.assertEquals(1, posicionActual.getPosicionX());
+        Assertions.assertEquals(1, posicionActual.getPosicionY());
     }
 
     @Test
     void testAlineamientoPosicionRecorreDiagonalPrincipal() {
         alineamiento.moveteDerecha()
                 .moveteAbajo();
-        Assertions.assertEquals(posicionActual.getPosicionX(), 2);
-        Assertions.assertEquals(posicionActual.getPosicionY(), 2);
+        Assertions.assertEquals(2, posicionActual.getPosicionX());
+        Assertions.assertEquals(2, posicionActual.getPosicionY());
         alineamiento.moveteIzquierda()
                 .moveteArriba();
-        Assertions.assertEquals(posicionActual.getPosicionX(), 1);
-        Assertions.assertEquals(posicionActual.getPosicionY(), 1);
+        Assertions.assertEquals(1, posicionActual.getPosicionX());
+        Assertions.assertEquals(1, posicionActual.getPosicionY());
         alineamiento.moveteIzquierda()
                 .moveteArriba();
-        Assertions.assertEquals(posicionActual.getPosicionX(), 0);
-        Assertions.assertEquals(posicionActual.getPosicionY(), 0);
+        Assertions.assertEquals(0, posicionActual.getPosicionX());
+        Assertions.assertEquals(0, posicionActual.getPosicionY());
     }
 
     @Test

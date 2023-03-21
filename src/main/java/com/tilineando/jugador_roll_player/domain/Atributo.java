@@ -32,6 +32,15 @@ public class Atributo {
                 .reduce(0, Integer::sum);
     }
 
+    public Integer cantDadosDeColor(Color color) {
+        if (dados.isEmpty()) {
+            return 0;
+        }
+        return (int) dados.stream()
+                .filter(dado -> dado.tenesColor(color))
+                .count();
+    }
+
     public void agregateDado(Dado dado) {
         if (!puedeAgregarDado()) {
             throw new DomainAtributoException("Solo se puede agregar " + this.limiteDados + " dados");
@@ -39,8 +48,9 @@ public class Atributo {
         dados.add(dado);
         habilitarAccion();
     }
-    public  Dado obteneDadoEnPosicion(int posicion){
-        return  this.dados.get(posicion);
+
+    public Dado obteneDadoEnPosicion(int posicion) {
+        return this.dados.get(posicion);
     }
 
     public void quitateDado(Dado dado) {
