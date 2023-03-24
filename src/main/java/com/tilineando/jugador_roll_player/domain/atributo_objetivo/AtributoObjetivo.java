@@ -19,6 +19,7 @@ public class AtributoObjetivo {
     }
 
     public int bonusPorObjetivo() {
+
         return tipoObjetivo.cumpleObjetivo(atributo) ? bonus : 0;
     }
 

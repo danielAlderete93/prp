@@ -40,7 +40,7 @@ class AccionesAtributoTest {
         dado1 = new Dado(new Color("Rojo"), 4, 1, 6);
         dado2 = new Dado(new Color("Verde"), 5, 1, 6);
 
-        personaje = new Personaje(atributos);
+        personaje = new Personaje(atributos,null,null,null);
         atributoInicial.agregateDado(dado1);
         atributoFinal.agregateDado(dado2);
 
@@ -69,7 +69,7 @@ class AccionesAtributoTest {
 
     @Test
     void testAccionGirar180Grados() {
-        accion = new AccionGirarDado180Grados(posicionDeDadoInicial);
+        accion = new AccionGirar180GradosDado(posicionDeDadoInicial);
         accion.realizaAccion(personaje);
 
         Assertions.assertEquals(3, posicionDeDadoInicial.obteneDado().getValor());

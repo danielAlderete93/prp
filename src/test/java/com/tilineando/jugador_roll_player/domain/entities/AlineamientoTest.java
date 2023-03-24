@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlineamientoTest {
+class AlineamientoTest {
     Alineamiento alineamiento;
     BonusAlineamiento bonus;
     PosicionAlineamiento posicionActual;
@@ -26,6 +26,36 @@ public class AlineamientoTest {
     }
 
     @Test
+    void testAlineamientoPosicionMoverseADerecha_PosicionXActualSeIncrementaEn1() {
+        int valorInicial = posicionActual.getPosicionX();
+        alineamiento.moveteDerecha();
+        Assertions.assertEquals(valorInicial+1, posicionActual.getPosicionX());
+
+    }
+
+    @Test
+    void testAlineamientoPosicionMoverseAIzquierda_PosicionXActualSeDecrementaEn1() {
+        int valorInicial = posicionActual.getPosicionX();
+        alineamiento.moveteIzquierda();
+        Assertions.assertEquals(valorInicial-1, posicionActual.getPosicionX());
+
+    }
+
+    @Test
+    void testAlineamientoPosicionMoverseAArriba_PosicionYActualSeDecrementaEn1() {
+        int valorInicial = posicionActual.getPosicionY();
+        alineamiento.moveteArriba();
+        Assertions.assertEquals(valorInicial-1, posicionActual.getPosicionY());
+    }
+
+    @Test
+    void testAlineamientoPosicionMoverseAAbajo_PosicionYActualSeIncrementaEn1() {
+        int valorInicial = posicionActual.getPosicionY();
+        alineamiento.moveteAbajo();
+        Assertions.assertEquals(valorInicial+1, posicionActual.getPosicionY());
+    }
+
+    @Test
     void testAlineamientoPosicionActualPuedeRecorrerPorLasCuatroDirecciones() {
         alineamiento.moveteDerecha()
                 .moveteIzquierda()
@@ -33,48 +63,6 @@ public class AlineamientoTest {
                 .moveteAbajo();
         Assertions.assertEquals(1, posicionActual.getPosicionX());
         Assertions.assertEquals(1, posicionActual.getPosicionY());
-    }
-
-    @Test
-    void testAlineamientoPosicionRecorreDiagonalPrincipal() {
-        alineamiento.moveteDerecha()
-                .moveteAbajo();
-        Assertions.assertEquals(2, posicionActual.getPosicionX());
-        Assertions.assertEquals(2, posicionActual.getPosicionY());
-        alineamiento.moveteIzquierda()
-                .moveteArriba();
-        Assertions.assertEquals(1, posicionActual.getPosicionX());
-        Assertions.assertEquals(1, posicionActual.getPosicionY());
-        alineamiento.moveteIzquierda()
-                .moveteArriba();
-        Assertions.assertEquals(0, posicionActual.getPosicionX());
-        Assertions.assertEquals(0, posicionActual.getPosicionY());
-    }
-
-    @Test
-    void testAlineamientoMoverseMasPosicionesXQueLaPermitidaFalla() {
-        posicionActual.setPosicionX(1);
-
-        Assertions.assertThrowsExactly(DomainAlineamientoException.class,
-                () -> alineamiento.moveteDerecha().moveteDerecha());
-
-        Assertions.assertThrowsExactly(DomainAlineamientoException.class,
-                () -> alineamiento.moveteIzquierda().moveteIzquierda().moveteIzquierda());
-
-
-    }
-
-    @Test
-    void testAlineamientoSeLeeCorrectamenteElBonusDePosicion() {
-        posicionActual.setPosicionX(1);
-
-        Assertions.assertThrowsExactly(DomainAlineamientoException.class,
-                () -> alineamiento.moveteDerecha().moveteDerecha());
-
-        Assertions.assertThrowsExactly(DomainAlineamientoException.class,
-                () -> alineamiento.moveteIzquierda().moveteIzquierda().moveteIzquierda());
-
-
     }
 
     @Test

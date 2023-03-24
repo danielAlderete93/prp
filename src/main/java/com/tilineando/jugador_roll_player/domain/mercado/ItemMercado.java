@@ -1,5 +1,7 @@
 package com.tilineando.jugador_roll_player.domain.mercado;
 
+import com.tilineando.jugador_roll_player.domain.Alineamiento;
+import com.tilineando.jugador_roll_player.domain.PosicionAlineamiento;
 import com.tilineando.jugador_roll_player.domain.acciones.Accion;
 
 public abstract class ItemMercado {
@@ -8,8 +10,12 @@ public abstract class ItemMercado {
     private String nombre;
     private String descripcion;
     private String ambientacion;
+    private PosicionAlineamiento posicionAlineamiento;
     private Accion accion;
 
-    public abstract void moveAlinemiento();
+    public void moveAlinemiento(Alineamiento alineamiento){
+
+    };
+ 
 
 }

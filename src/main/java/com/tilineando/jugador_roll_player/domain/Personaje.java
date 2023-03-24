@@ -14,6 +14,10 @@ import java.util.List;
 @NoArgsConstructor
 public class Personaje {
     private List<Atributo> atributos;
+    private Transfondo transfondo;
+    private Alineamiento alineamiento;
+    private Clase clase;
+
 
     public boolean tieneAtributo(Atributo atributo) {
         return this.atributos.contains(atributo);

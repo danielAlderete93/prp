@@ -15,6 +15,7 @@ public class PosicionDeDado {
     private Atributo atributo;
     private Integer posicion;
 
+
     public Dado obteneDado() {
 
         if (!tienePosicionValida()) {

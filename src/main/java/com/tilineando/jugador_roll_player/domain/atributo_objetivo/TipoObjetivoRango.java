@@ -14,6 +14,7 @@ public class TipoObjetivoRango implements TipoObjetivo {
 
     @Override
     public boolean cumpleObjetivo(Atributo atributo) {
-        return atributo.sumatoriaValorDados() <= valorMaximo && atributo.sumatoriaValorDados() >= valorMinimo;
+        int valorSumatoria = atributo.sumatoriaValorDados();
+        return valorSumatoria <= valorMaximo && valorSumatoria >= valorMinimo;
     }
 }
