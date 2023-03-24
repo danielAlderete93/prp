@@ -40,7 +40,7 @@ class AtributoTest {
         atributos.add(fuerza);
         atributos.add(destreza);
 
-        personaje = new Personaje(atributos);
+        personaje = new Personaje(atributos, null, null, null);
 
 
     }
@@ -77,13 +77,19 @@ class AtributoTest {
 
     @Test
     void testAtributoFallaAlAgregarDadoExtra() {
+        agregaDadosHastaLimite();
 
-        //Se rellena la lista de dados del atributo.
+        Assertions.assertThrows(DomainAtributoException.class, this::agregaDadoAFuerza);
+    }
+
+    private void agregaDadosHastaLimite() {
         for (int i = 0; i < limiteDado; i++) {
-            personaje.agregaDadoEnAtributo(new Dado(), fuerza);
+            this.agregaDadoAFuerza();
         }
+    }
 
-        Assertions.assertThrows(DomainAtributoException.class, () -> personaje.agregaDadoEnAtributo(new Dado(), fuerza));
+    private void agregaDadoAFuerza() {
+        personaje.agregaDadoEnAtributo(new Dado(), fuerza);
     }
 
     @Test
